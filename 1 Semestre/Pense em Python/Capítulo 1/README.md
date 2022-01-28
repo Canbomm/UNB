@@ -1,4 +1,4 @@
-Exercício 1.2 do Capítulo 1 de [PenseEmPython](https://penseallen.github.io/PensePython2e/01-jornada.html)
+**Exercício 1.2 do Capítulo 1 de [PenseEmPython](https://penseallen.github.io/PensePython2e/01-jornada.html)**
 
 1. Quantos segundos há em 42 minutos e 42 segundos?
 
