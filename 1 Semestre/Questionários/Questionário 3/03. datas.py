@@ -5,4 +5,4 @@ t = int(input())
 data1 = date.today()
 data2 = data1 - timedelta(days = t)
 print(data2)
-#errei a questão por não saber ler 🤡
+#errei a questão por não saber ler :emoji_de_palhaco:
