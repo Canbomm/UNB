@@ -1,3 +1,5 @@
+## W.I.P ##
+
 O SIGAA é legal, mas poderia ser melhor! E se algumas funcionalidades fossem integradas? Poder gerenciar sua grade horária ou a alocação de salas tornariam a experiência com o sistema muito melhor. Capaz de atender esta demanda, a turma de APC resolveu implementar o vulgarmente conhecido como SAD (☹️) - Sistema de Apoio ao Discente, uma plataforma flexível que proverá soluções para todos!
 
 A primeira funcionalidade a ser criada é a de gerenciamento de grade horária, de modo que a matrícula no próximo semestre ocorra de forma mais fluida. Implemente as seguintes funcionalidades para os comandos indicados:
