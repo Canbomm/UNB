@@ -158,6 +158,8 @@ while True:
     # termina o código
     if inputs == "Hasta la vista, beibe!":
         break
+    elif inputs == "":
+        print(f"!({inputs})")
     # imprime a grade atual
     elif inputs == "?":
         g_horaria.sort()
