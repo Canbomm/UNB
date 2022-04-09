@@ -16,7 +16,7 @@ def VerificadorInput(lista):
                 return False
             # verifica se o dia da semana nao "estourou"
             for n in horario[:(letras[1])]:
-                if int(n) > 7:
+                if int(n) > 7 or int(n) < 2:
                     return False
             # verifica se o horario nao "estourou"
             for n in horario[(letras[1])+1:]:
@@ -134,6 +134,22 @@ def printaGrade(lista):
     for linha in g_horaria:
         print(linha)
 
+def organizadora(lista):
+    SORT_ORDER = {"M":0,"T":1,"N":2}
+    turnos = []
+    organizada = []
+    for elem in lista:
+        index = lista.index(elem)
+        horario = elem.split()
+        turno = horario[0][1]
+        tupla = (turno,index)
+        turnos.append(tupla)
+    turnos = sorted(turnos, key=lambda val: SORT_ORDER[val[0]])
+    for tupla in turnos:
+        index = tupla[1]
+        organizada.append(lista[index])
+    return organizada
+
 g_horaria = []
 g_horaria_temp = []
 
@@ -145,6 +161,7 @@ while True:
     # imprime a grade atual
     elif inputs == "?":
         g_horaria.sort()
+        g_horaria = organizadora(g_horaria)
         printaGrade(g_horaria)
     # trabalha com o input
     else:
