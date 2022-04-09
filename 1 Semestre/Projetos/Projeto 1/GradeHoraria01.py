@@ -1,3 +1,4 @@
+# essa versão possuía um validador muito "especifico" e está incompleta
 def Validador(texto):
     # primeiro termo é um + ou -
     if not (texto[0] == "+" or texto[0] == "-"):
