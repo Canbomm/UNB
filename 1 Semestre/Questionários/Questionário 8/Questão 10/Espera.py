@@ -1,17 +1,28 @@
+# O grande problema que eu tive foi contar quando a 'fileira' já começava com 0 ou terminava com 0,
+# no final eu só consegui implementar quando começa com 0, por isso lá na frente tem uns reverse loco.
+# Mas deu tudo certo :).
+
 def contaespaco(lista):
     conta = 0
     resposta = 0
-    for i in range(0,len(lista)):
-        if lista[i] == 0:
-            conta += 1
-        else:
-            if conta > resposta:
+    if lista[0] == 0:
+        for i in lista:
+            if i == 1:
+                break
+            resposta += 2
+    for i in lista:
+        if i == 1:
+            if resposta < conta:
                 resposta = conta
             conta = 0
-    if resposta == 2:
-        # por conta que ela vai sentar em um banco e vai ter alguem do lado dela
-        resposta = 1
-    return resposta
+        else:
+            conta += 1
+    # tratando a resposta
+    if resposta % 2 == 0:
+        resposta = resposta/2
+    else:
+        resposta = (resposta + 1)/2
+    return int(resposta)
 
 matriz = []
 linhas,colunas = map(int,input().split())
@@ -22,9 +33,17 @@ while linhas_m > 0:
     linhas_m -= 1
 
 maior = 0
+comparacao = 0
 for i in range(0,len(matriz)):
     espacos_fileira = contaespaco(matriz[i])
-    if maior <= espacos_fileira:
-        maior = espacos_fileira 
+    matriz[i].reverse()
+    espacos_fileira_invertido = contaespaco(matriz[i])
+    matriz[i].reverse()
+    if espacos_fileira > espacos_fileira_invertido:
+        comparacao = espacos_fileira
+    else:
+        comparacao = espacos_fileira_invertido
+    if comparacao > maior:
+        maior = comparacao
 
 print(maior)
