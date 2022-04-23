@@ -1,3 +1,4 @@
+# muito pesado não consegue calcular o fibo de 1000
 import sys
 sys.setrecursionlimit(10**6)
 

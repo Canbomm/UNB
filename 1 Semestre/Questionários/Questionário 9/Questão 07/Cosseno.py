@@ -7,4 +7,10 @@ def TwoDSpace(deslocamento, amplitude, espaço):
             dicionario[(i, j)] = "*"
     for j in range(20):
         for i in range(40):
-            print(dicionario[i,j])
+            try:
+                print(dicionario[(i,j)],end="")
+            except:
+                print(espaço,end="")
+        print()
+
+# TwoDSpace(10, 8, ".")
