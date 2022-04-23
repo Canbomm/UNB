@@ -167,7 +167,8 @@ while True:
         print(f"!({inputs})")
     # imprime a grade atual
     elif inputs == "?":
-        g_horaria.sort()
+        # Esse sort default do python me ferrou, por conta dele eu errei um caso de teste e não gabaritei o projeto
+        # g_horaria.sort()
         g_horaria = organizadora(g_horaria)
         printaGrade(g_horaria)
     # trabalha com o input
