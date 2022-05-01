@@ -1,4 +1,4 @@
-def leia(nome_arq,dic_carga,dic_disciplina,turmas):
+def leia(nome_arq,dic_carga,dic_disciplina,turmas,dic_alunos,dic_codigos):
     with open(nome_arq, encoding="UTF-8") as arquivo:
         # primeira linha do csv, nao me importa muito
         cabecalho = (next(arquivo)).rstrip()
@@ -52,8 +52,21 @@ def leia(nome_arq,dic_carga,dic_disciplina,turmas):
                     dic_disciplina[disciplina_cod] += [docente]
             else:
                 dic_disciplina[disciplina_cod] = [docente]
-        
-        return dic_carga,dic_disciplina,turmas
+
+            # pegando o total de alunos
+            qAlunos = int(dados[4])
+            turma_solo = dados[2]
+            if dic_alunos.get(codigo) != None:
+                if dic_alunos[codigo].get(turma_solo) == None:
+                    dic_alunos[codigo][turma_solo] = qAlunos
+            else:
+                dic_alunos[codigo] = {turma_solo:qAlunos}
+            
+            # criando um dicionario com o codigo e o nome da turma
+            if dic_codigos.get(codigo) == None:
+                dic_codigos[codigo] = disciplina
+    
+        return dic_carga,dic_disciplina,turmas,dic_alunos,dic_codigos
 
 def carga(cargas,docente):
     # espaco que vem antes de "printar" a turma:
@@ -114,9 +127,27 @@ def carga(cargas,docente):
     else:
         print(f"No hay {docente}...")
 
-def matriculas():
-    print(f"Chamaram o matriculas")
-    return None
+def matriculas(dic_alunos,chamados,dic_codigos):
+    no_hay = []
+    existem = []
+    for cod in chamados:
+        total = 0
+        if dic_alunos.get(cod) != None:
+            for chave in dic_alunos[cod]:
+                alunos = dic_alunos[cod][chave]
+                total += alunos
+            if dic_codigos[cod] != None:
+                disciplina = dic_codigos[cod]
+                tupla = (-total,(f"{disciplina} ({cod})"))
+                existem.append(tupla)
+        else:
+            no_hay.append(cod)
+    organizada = sorted(existem)
+    for linha in organizada:
+        alunos,disciplina = linha
+        print(f"{abs(alunos)} matriculados em {disciplina}")
+    for erro in no_hay:
+        print(f"No hay {erro}...")
 
 def disciplina(disciplinas,numero,turmas):
     # pega as disciplinas com o numero de docente desejado
@@ -161,6 +192,8 @@ def contaGrupos(lista):
 dic_carga = {}
 dic_disciplina = {}
 turmas = {}
+dic_alunos = {}
+dic_codigos = {}
 jaLidos = []
 
 while True:
@@ -173,10 +206,12 @@ while True:
 
         # verifica se o arquivo ja nao foi lido
         if not procuraLista(jaLidos,nome_arq):
-            lendo = leia(nome_arq,dic_carga,dic_disciplina,turmas)
+            lendo = leia(nome_arq,dic_carga,dic_disciplina,turmas,dic_alunos,dic_codigos)
             dic_carga = lendo[0]
             dic_disciplina = lendo[1]
             turmas = lendo[2]
+            dic_alunos = lendo[3]
+            dic_codigos = lendo[4]
             jaLidos.append(nome_arq)
     
     # executa o carga
@@ -186,7 +221,8 @@ while True:
     
     # executa o matriculas
     elif (comando.split())[0] == "matriculas":
-        matriculas()
+        chamados = (comando.split())[1:]
+        matriculas(dic_alunos,chamados,dic_codigos)
     
     # executa o disciplina
     elif (comando.split())[0] == "disciplina":
