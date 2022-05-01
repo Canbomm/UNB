@@ -1,5 +1,3 @@
-## W.I.P ##
-
 A princesa e o dragão
 Uma história muito conhecida e bem clichê é a da princesa no quarto mais alto da torre mais alta guardada por um dragão. E geralmente tem um cavaleiro no meio, e essa não é diferente.
 

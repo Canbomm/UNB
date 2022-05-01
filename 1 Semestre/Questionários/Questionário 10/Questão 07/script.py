@@ -5,15 +5,37 @@ with open(nome_arq) as arquivo:
     for linha in arquivo:
         lido.append(linha.rstrip())
 
-k = lido[0]
+numero_magico = int(lido[0])
 vetor = lido[1]
+vetores = vetor.split()
 
-menor = vetor.min()
-maior = vetor.max()
+def agrupaLista(lista,passo):
+    nova_lista = []
+    for i in range(0,len(lista)):
+        conjunto = lista[i:i+passo]
+        nova_lista.append(conjunto)
+    return nova_lista
 
-bonitoPedro1 = 0
-bonitoPedro2 = 0
+def bonitoPedro(lista,numero_magico):
+    maior = int(max(lista))
+    if (maior*2) > len(lista) and (2*numero_magico) <= maior:
+        return True
+    return False
 
-if maior >= (len(vetor)*2):
-    bonitoPedro1 += 1
+def bonito2Pedro(lista,numero_magico):
+    menor = int(min(lista))
+    if menor <= ((len(lista))/2) and menor <= (numero_magico)/2:
+        return True
+    return False
 
+listas = agrupaLista(vetores,numero_magico)
+QbonitoPedro = 0
+Qbonito2Pedro = 0
+
+for lista in listas:
+    if bonitoPedro(lista,numero_magico):
+        QbonitoPedro += 1
+    if bonito2Pedro(lista,numero_magico):
+        Qbonito2Pedro += 1
+
+print(QbonitoPedro,Qbonito2Pedro)
