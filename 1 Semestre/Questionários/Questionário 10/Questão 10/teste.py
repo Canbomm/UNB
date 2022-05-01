@@ -1,9 +1,20 @@
-nome_arq = input()
+lido = ["swqoozotpbgwxflghgrl",
+"eebrjrkjktjibnmjfzvz",
+"gekcoonokalzoekctfqq",
+"cxaufxwxvuuqozsdsdgq",
+"tawoxlfwmnxlqmwqcglw",
+"pjvgjxxdmcbarkxqkqma",
+"xqjrgtmdrdabxfplicsl",
+"bicxyyssnsrzvbfcdmal",
+"lejbtqnwfvfckzuejsay",
+"rkzujukgrfrjiniafxaz",
+"tikfrkrimwjaiykdmuog",
+"vziiapkmalbwsyoncnoe",
+"bjuwinbhjqksgukhjcfp",
+"ueuwfiqsgqkjssosceah",
+"jccmpcvrpjivubibeibz"]
 
-with open(nome_arq) as arquivo:
-    lido = []
-    for linha in arquivo:
-        lido.append(linha.rstrip())
+lido = ['nkkumvqgqnmjime', 'zewafngwhnmbkur', 'rrwlnzivkwmjpfg', 'tjkrnpbkzzrjygz', 'exisgsklariuzdz', 'yyuyajqaupezdir', 'ktlreetkdkwatlw', 'onkautaklveqkhi', 'iolwamelvydsdqk', 'svjotctfkenwjab', 'sxmjtyoqnamgiis', 'ludjenlyihavzbp', 'uupujosxbcwally', 'lbbhcrjglhqubgg', 'cakoswwoflqhljt']
 
 def achaHorizon(lista,palavra):
     for index1, linha in enumerate(lista):

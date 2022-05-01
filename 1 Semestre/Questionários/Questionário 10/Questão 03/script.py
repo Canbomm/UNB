@@ -3,23 +3,22 @@ nome_arq = input()
 with open(nome_arq) as arquivo:
     lido = []
     for linha in arquivo:
-        lido.append(linha)
-    for i in range(0,len(lido)-1):
-        lido[i] = lido[i][:-1]
+        lido.append(linha.rstrip())
 
 for codigo in lido:
     index = 0
     resposta = ""
+    numero = ""
     for caractere in codigo:
-        print(caractere)
-        try:
-            print(f"Entrei no try")
-            vezes = int(caractere)
-            resposta += codigo[index-1]*vezes
-            print(f"Entrei no try e fiz a operação")
-        except:
-            print(f"Entrei no except")
+        if caractere.isdecimal():
+            numero += caractere
+        else:
+            if numero != "":
+                resposta += codigo[index-len(numero)-1]*(int(numero)-1)
+                numero = ""
             resposta += caractere
-        print(f"\n")
         index += 1
+    if numero != "":
+        resposta += codigo[index-len(numero)-1]*(int(numero)-1)
+        numero = ""
     print(resposta)
