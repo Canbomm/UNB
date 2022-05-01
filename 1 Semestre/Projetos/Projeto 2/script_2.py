@@ -132,10 +132,14 @@ def disciplina(disciplinas,numero,turmas):
         print(f"Turmas com pelo menos {numero} docentes:")
         for chave in disciplinas_desejadas:
             contados = contaGrupos(turmas[chave])
-            turmas_f = ""
+            turmas_f = []
             for chave2 in contados:
-                turmas_f += (str(chave2) + " (" + str(contados[chave2]) + "), ")
-            print(f" *  {chave}: {turmas_f[:-2]}")
+                if contados[chave2] >= numero:
+                    turmas_f += [str(chave2) + " (" + str(contados[chave2]) + ")"]
+            if len(turmas_f) > 0:
+                turmas_f.sort()
+                string = f" * {chave}: {', '.join(turmas_f)}"
+                print(string)
     else:
         print(f"No hay {numero}...")
 
@@ -187,8 +191,7 @@ while True:
     # executa o disciplina
     elif (comando.split())[0] == "disciplina":
         num_docentes = int((comando.split())[-1])
-        print(dic_disciplina)
-        #disciplina(dic_disciplina,num_docentes,turmas)
+        disciplina(dic_disciplina,num_docentes,turmas)
     
     # encerra o programa
     else:
