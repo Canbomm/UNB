@@ -103,7 +103,7 @@ def carga(cargas,docente):
                 carga_horaria,alunos_matriculados = horario.split("(")
                 carga_horaria = int(carga_horaria[:-2])
                 matriculados = int((alunos_matriculados.split())[0])
-                if matriculados > 6:
+                if matriculados >= 6:
                     carga_total_disc += carga_horaria
                     total_alunos_disc += matriculados
             # trabalha com as cargas
