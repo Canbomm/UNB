@@ -1,5 +1,3 @@
-## W.I.P ##
-
 Pipo encontrou alguns arquivos aparentemente comprimidos em seu computador. O conteúdo deles não é interessante, mas sendo um aluno de programação ele decidiu decodificá-los para treinar. Ele te contou a história, e como você é um aluno de programação também decidiu decodificá-los para treinar... né? É sim.
 
 Os arquivos são sequências de strings (uma por linha, terminadas por '\n'). Uma linha é, por exemplo:
