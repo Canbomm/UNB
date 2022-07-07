@@ -27,10 +27,10 @@ while anilha != 0:
 peso_desejado = int(input())
 
 # retirando a anilha do topo
-total_retirado = 1
-peso_topo = pesos.pop()
-total_peso = peso_topo
-if total_peso != None:
+if pesos.items != []:
+    total_retirado = 1
+    peso_topo = pesos.pop()
+    total_peso = peso_topo
     print(f"Peso retirado: {peso_topo}")
     # retirando mais anilhas ate o desejado
     while peso_topo != peso_desejado:
