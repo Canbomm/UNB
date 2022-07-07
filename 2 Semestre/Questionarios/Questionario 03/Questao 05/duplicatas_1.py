@@ -25,13 +25,14 @@ def duplicata(string):
         for index,char in enumerate(formatada):
             if char == "o" and (formatada[index-1] == "(" or formatada[index-1] == "[" or formatada[index-1] == "{") and (formatada[index+1] == ")" or formatada[index+1] == "]" or formatada[index+1] == "}"):
                 tem_o = True
-                formatada = (formatada[:index-1] + formatada[index+2:])
+                formatada = (formatada[:index-1] + "o" + formatada[index+2:])
+                print("dentro do while",formatada)
                 break
         if not tem_o:
             break
     # caso a formatada tenha qualquer coisa, entao ha duplicatas
     print(formatada)
-    if formatada != "":
+    if formatada != "o":
         return "A expressão possui duplicata."
     else:
         return "A expressão não possui duplicata."
