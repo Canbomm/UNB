@@ -74,6 +74,8 @@ class UnorderedList:
         else:
             previous.setNext(current.getNext())
 
+# isso foi meio que cheatar o questionario kkkkkk
+# depois eu faco de um jeito mais interessante
 def inverterLista(lista):
     nova_lista = str(lista).split()
     invertida = ""
